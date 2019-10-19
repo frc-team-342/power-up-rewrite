@@ -17,9 +17,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveSystem extends SubsystemBase {
-  
-  private static final DriveSystem INSTANCE = new DriveSystem();
-  
+    
   // Declaring motor controllers and NavX
   private TalonSRX leftLead;
   private TalonSRX leftFollow1;
@@ -28,7 +26,7 @@ public class DriveSystem extends SubsystemBase {
   private TalonSRX rightFollow1;
   private TalonSRX rightFollow2;
 
-  private AHRS NavX;
+  private static AHRS NavX;
 
   private final double SLOW_SPEED = 0.5;
   private boolean slowmode = false;
@@ -90,8 +88,24 @@ public class DriveSystem extends SubsystemBase {
     rightLead.set(ControlMode.Velocity, rightSpeed);
   }
 
-  // Used to access DriveSystem without having to create a new instance every time it's referenced
-  public static DriveSystem getInstance () {
-    return INSTANCE;
+  public void driveStop () {
+    leftLead.set(ControlMode.PercentOutput, 0);
+    rightLead.set(ControlMode.PercentOutput, 0);
+  }
+
+  // Static NavX methods that can be used without having to create new instances of DriveSystem
+  public static double getPitch () {
+    // Pitch is the vertical angle of the robot on an axis from side to side
+    return NavX.getPitch();
+  }
+  
+  public static double getYaw () {
+    // Yaw is the horizontal angle of the robot on an axis from bottom to top
+    return NavX.getYaw();
+  }
+
+  public static double getRoll () {
+    // Roll is the rotation of the robot on an axis running from the back to the front
+    return NavX.getRoll();
   }
 }
