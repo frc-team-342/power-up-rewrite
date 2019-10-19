@@ -10,18 +10,17 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ExampleSubsystem extends SubsystemBase {
-  /**
-   * Creates a new ExampleSubsystem.
-   */
+  // Code for initializing subsystem, called when ExampleSubsystem is created
   public ExampleSubsystem() {
 
   }
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
+  // Will be called periodically whenever the CommandScheduler runs.
   @Override
   public void periodic() {
 
   }
+
+  // Methods for controlling the subsystem
+  
 }
