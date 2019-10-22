@@ -23,4 +23,7 @@ public final class Constants {
     public static final int DRV_RIGHTLEAD = 4;
     public static final int DRV_RIGHTFOLLOW1 = 5;
     public static final int DRV_RIGHTFOLLOW2 = 6;
+
+    // Values used in commands
+    public static final double DRV_DEADZONE = 0.2;
 }

@@ -5,28 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.drive;
 
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.DriveSystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 // An example command that uses an example subsystem.
-public class ExampleCommand extends CommandBase {
+public class SlowMode extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ExampleSubsystem m_subsystem;
+  private final DriveSystem m_subsystem;
 
   
   // Creates a new Command.
-  public ExampleCommand(ExampleSubsystem subsystem) {
-    // Adds ExampleSubsystem as a requirement subsystem, allowing methods from the subsystem to be called
+  public SlowMode(DriveSystem subsystem) {
     m_subsystem = subsystem;
     addRequirements(subsystem);
   }
 
   // This method is called before execute() and should contain any initialization needed by the command
   public void initialize () {
-
+    m_subsystem.setSlow(!m_subsystem.getSlow());
   }
 
   // This method is called repeatedly when the command is scheduled until isFinished() returns true and should contain any actions to be performed by the command
@@ -41,6 +40,6 @@ public class ExampleCommand extends CommandBase {
 
   // This method is called repeatedly when the command is scheduled and calls the end() method when it returns true
   public boolean isFinished () {
-    return false;
+    return true;
   }
 }
