@@ -24,6 +24,12 @@ public final class Constants {
     public static final int DRV_RIGHTFOLLOW1 = 5;
     public static final int DRV_RIGHTFOLLOW2 = 6;
 
+    // Joystick button / axis IDs
+    public static final int XBOX_LEFT_X = 0;
+    public static final int XBOX_LEFT_Y = 1;
+    public static final int XBOX_RIGHT_X = 4;
+    public static final int XBOX_RIGHT_Y = 5;
+
     // Values used in commands
     public static final double DRV_DEADZONE = 0.2;
 }

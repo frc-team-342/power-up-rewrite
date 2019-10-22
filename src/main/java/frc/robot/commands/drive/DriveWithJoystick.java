@@ -45,8 +45,8 @@ public class DriveWithJoystick extends CommandBase {
   // This method is called repeatedly when the command is scheduled until isFinished() returns true and should contain any actions to be performed by the command
   public void execute () {
     // Gets values of Xbox joysticks from RobotContainer
-    leftSpeed = robotcontainer.getXboxAxis(1);
-    rightSpeed = robotcontainer.getXboxAxis(5);
+    leftSpeed = robotcontainer.getXboxAxis(Constants.XBOX_LEFT_Y);
+    rightSpeed = robotcontainer.getXboxAxis(Constants.XBOX_RIGHT_Y);
 
     if (Math.abs(leftSpeed) > Constants.DRV_DEADZONE || Math.abs(rightSpeed) > Constants.DRV_DEADZONE) {
       drive.drivePercentOutput(leftSpeed, rightSpeed);
