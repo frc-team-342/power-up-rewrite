@@ -7,20 +7,34 @@
 
 package frc.robot.commands.drive;
 
-import frc.robot.subsystems.DriveSystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import frc.robot.RobotContainer;
+import frc.robot.Constants;
+import frc.robot.subsystems.DriveSystem;
 
-// An example command that uses an example subsystem.
+
+// An drive command that uses the DriveSystem
 public class DriveWithJoystick extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final DriveSystem m_subsystem;
+  private final DriveSystem drive;
 
-  
+  // Declaration of RobotContainer instance used for joystick input
+  private RobotContainer robotcontainer;
+
+  // Variables used for drive speed set from joystick input
+  private double leftSpeed;
+  private double rightSpeed;
+
   // Creates a new Command.
   public DriveWithJoystick(DriveSystem subsystem) {
-    m_subsystem = subsystem;
+    // Adds DriveSystem as a requirement subsystem, allowing methods from the subsystem to be called
+    drive = subsystem;
     addRequirements(subsystem);
+
+    // Instantiation of RobotContainer instance used for joystick input
+    robotcontainer = RobotContainer.getInstance();
+
   }
 
   // This method is called before execute() and should contain any initialization needed by the command
@@ -30,6 +44,13 @@ public class DriveWithJoystick extends CommandBase {
 
   // This method is called repeatedly when the command is scheduled until isFinished() returns true and should contain any actions to be performed by the command
   public void execute () {
+    // Gets values of Xbox joysticks from RobotContainer
+    leftSpeed = robotcontainer.getXboxAxis(1);
+    rightSpeed = robotcontainer.getXboxAxis(5);
+
+    if (Math.abs(leftSpeed) > Constants.DRV_DEADZONE || Math.abs(rightSpeed) > Constants.DRV_DEADZONE) {
+      drive.drivePercentOutput(leftSpeed, rightSpeed);
+    } 
 
   }
 

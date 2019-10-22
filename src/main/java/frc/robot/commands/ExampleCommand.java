@@ -19,6 +19,7 @@ public class ExampleCommand extends CommandBase {
   
   // Creates a new Command.
   public ExampleCommand(ExampleSubsystem subsystem) {
+    // Adds ExampleSubsystem as a requirement subsystem, allowing methods from the subsystem to be called
     m_subsystem = subsystem;
     addRequirements(subsystem);
   }

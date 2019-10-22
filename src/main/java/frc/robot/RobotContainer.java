@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -23,17 +24,23 @@ import frc.robot.subsystems.ExampleSubsystem;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  // Joysticks and buttons are declared here
+  private Joystick xboxDrive;
+  private Joystick logiManipulator;
 
+  //
+  private static final RobotContainer INSTANCE = new RobotContainer();
 
-  /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
-   */
+  // The container for the robot.  Contains subsystems, OI devices, and commands. 
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    // Instantiate joysticks
+    xboxDrive = new Joystick(0);
+    logiManipulator = new Joystick(1);
   }
 
   /**
@@ -43,6 +50,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
   }
 
 
@@ -50,5 +58,18 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return m_autoCommand;
+  }
+
+  // This method is used so that a new instance of RobotContainer does not have to be created for every command
+  public static RobotContainer getInstance () {
+    return INSTANCE;
+  }
+
+  public double getXboxAxis (int axis) {
+    return xboxDrive.getRawAxis(axis);
+  }
+
+  public double getManipulatorAxis (int axis) {
+    return logiManipulator.getRawAxis(axis);
   }
 }
