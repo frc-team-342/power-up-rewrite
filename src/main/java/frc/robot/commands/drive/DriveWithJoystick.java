@@ -56,7 +56,7 @@ public class DriveWithJoystick extends CommandBase {
 
   // This method is called when isFinished() returns true and should stop any actions being run by the command
   public void end () {
-
+    drive.driveStop();
   }
 
   // This method is called repeatedly when the command is scheduled and calls the end() method when it returns true
