@@ -17,6 +17,9 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveSystem extends SubsystemBase {
+
+  // Instance of DriveSystem used in getInstance()
+  private static final DriveSystem INSTANCE = new DriveSystem();
     
   // Declaring motor controllers and NavX
   private TalonSRX leftLead;
@@ -29,7 +32,7 @@ public class DriveSystem extends SubsystemBase {
   private static AHRS NavX;
 
   private final double SLOW_SPEED = 0.5;
-  private boolean slowmode = false;
+  private Boolean slowmode = false;
   
   // Code for initializing subsystem, called when DriveSystem is created
   public DriveSystem() {
@@ -91,6 +94,17 @@ public class DriveSystem extends SubsystemBase {
   public void driveStop () {
     leftLead.set(ControlMode.PercentOutput, 0);
     rightLead.set(ControlMode.PercentOutput, 0);
+  }
+
+  // Methods for using slowmode
+  public void setSlow (Boolean slow) {
+    // Sets the DriveSystem's slowmode to the boolean parameter
+    slow = slowmode;
+  }
+
+  public Boolean getSlow () {
+    // Returns the current slowmode, as defined by setSlow()
+    return slowmode;
   }
 
   // Static NavX methods that can be used without having to create new instances of DriveSystem
