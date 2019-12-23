@@ -1,5 +1,3 @@
-# 2020 Robot Code
+# Power Up Rewrite
 
-Robot code for the FRC 2020 season based on the WPILib 2020 framework.
-
-Made using [Oblarg's Jitpack WPILib rewrite](https://github.com/Oblarg/command-rewrite-jitpack).
+Rewrite of the code for our robot from the 2018 season using features from WPILib 2020.
