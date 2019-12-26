@@ -16,13 +16,22 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    // CANifier
+    public static final int CANIFIER = 14;
+    
     // Motor CAN IDs
-    public static final int DRV_LEFTLEAD = 1;
-    public static final int DRV_LEFTFOLLOW1 = 2;
-    public static final int DRV_LEFTFOLLOW2 = 3;
-    public static final int DRV_RIGHTLEAD = 4;
-    public static final int DRV_RIGHTFOLLOW1 = 5;
-    public static final int DRV_RIGHTFOLLOW2 = 6;
+    public static final int DRV_RIGHTLEAD = 1;
+    public static final int DRV_RIGHTFOLLOW1 = 2;
+    public static final int DRV_RIGHTFOLLOW2 = 0;
+    public static final int DRV_LEFTLEAD = 3;
+    public static final int DRV_LEFTFOLLOW1 = 4;
+    public static final int DRV_LEFTFOLLOW2 = 0;
+    public static final int CLIMB_LEAD = 6;
+    public static final int CLIMB_FOLLOW = 7;
+    public static final int LIFT_LEAD = 8;
+    public static final int LIFT_FOLLOW = 9;
+    public static final int INTAKE_LEAD = 0;
+    public static final int INTAKE_FOLLOW = 1;
 
     // Joystick button / axis IDs
     public static final int XBOX_LEFT_X = 0;
