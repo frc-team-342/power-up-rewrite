@@ -24,10 +24,8 @@ public class DriveSystem extends SubsystemBase {
   // Declaring motor controllers and NavX
   private TalonSRX leftLead;
   private TalonSRX leftFollow1;
-  private TalonSRX leftFollow2;
   private TalonSRX rightLead;
   private TalonSRX rightFollow1;
-  private TalonSRX rightFollow2;
 
   private static AHRS NavX;
 
@@ -39,18 +37,14 @@ public class DriveSystem extends SubsystemBase {
     // Motor IDs are stored in Constants.java to make code more readable 
     leftLead = new TalonSRX(Constants.DRV_LEFTLEAD);
     leftFollow1 = new TalonSRX(Constants.DRV_LEFTFOLLOW1);
-    leftFollow2 = new TalonSRX(Constants.DRV_LEFTFOLLOW2);
     rightLead = new TalonSRX(Constants.DRV_RIGHTLEAD);
     rightFollow1 = new TalonSRX(Constants.DRV_RIGHTFOLLOW1);
-    rightFollow2 = new TalonSRX(Constants.DRV_RIGHTFOLLOW2);
 
     // Setting physically linked motors to follow one lead and setting them all to 0
     leftFollow1.follow(leftLead);
-    leftFollow2.follow(leftLead);
     leftLead.set(ControlMode.PercentOutput, 0);
 
     rightFollow1.follow(rightLead);
-    rightFollow2.follow(rightLead);
     rightLead.set(ControlMode.PercentOutput, 0);
 
     // NavX is a gyro used to detect the robot's pitch, yaw, and roll
